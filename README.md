@@ -1,5 +1,5 @@
 <div style="text-align:center">
-<img src="sth\AFP.png" alt="AFP_Logo" width="600"/>
+<img src="sth\AFP.png" alt="AFP_Logo" width="900"/>
 <h2>Improving Neural Network Efficiency via Post-training Quantization with Adaptive Floating-Point</h2>
 </div>
 pytorch implementation of Adaptive Floating-Point for model quantization
