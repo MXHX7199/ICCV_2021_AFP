@@ -7,6 +7,7 @@ pytorch implementation of Adaptive Floating-Point for model quantization
 # Overview
 ## Description
 - afp_sgd  (`/code/afp_sgd.py`)
+
 A modified SGD model that specifies the quantized weight bits for each weight matrix. The only difference is that a `weight_bits` parameter should be provided. The `params` parameter also accept dicts with `weight_bits` keys.
 ```python
 optimizer = AFP_SGD(params=model.parameters(), 
@@ -21,11 +22,14 @@ optimizer.step()
 ```
 
 - quantize_scheduler (`/code/quantize_scheduler.py`)
+
 Contains the functions that handles the quantization of weights using Adaptive Floating-Point format.
 
  - quantize_weight(weight, possible_quantized)
+ 
 Quantize a single `weight` into the nearest neighbour in `possible_quantized`.
  - AFPScheduler(object)
+ 
 A class that decides the quantize range of all weight matrices in an optimizer and provide quantize API.
 
 Initialization:  
@@ -46,12 +50,18 @@ validate(...)   # post-quantization validation
 
 - getSA (`/code/getSA.py`)
  - compute_KL(p, E_e, E_s)
+
+
 Compute the KL-divergence of weight matrix p and quantized one given exponent bit-width E_e and mantissa bit-width E_s
 
  - getQuanMSE(N_q, E_e, resume=None)
+
+
 Compute average KL-divergence of a model loaded from `resume` given total quantization bit-width `N_q` and exponent bit-width `E_e`.
 
  - SA(object)
+
+
 The simulation annealing class that finds the optimal bit-width of the exponent to minimize the average KL-divergence, given the model and target quantization bit-width. The searching algorithm can be substituted with other ones such as genetic searching,  bayesian optimization (used in our paper).
 
 
